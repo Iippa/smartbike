@@ -1,13 +1,9 @@
-import os
+
 import binascii
 import sys
 import Adafruit_PN532 as PN532
 import kivy
-import pymysql
 
-from flask import Flask, request, render_template, redirect, url_for, flash, session
-import logging
-from logging.handlers import RotatingFileHandler
 from kivy.app import App
 from kivy.uix.label import Label
 
@@ -57,20 +53,6 @@ class MyApp(App):
 def valid_login():
         #Read value from NFC/RFID reader
         scan = '0x{0}'.format(binascii.hexlify(uid))
-        #mysql
-        MYSQL_DATABASE_HOST = os.getenv('IP', '0.0.0.0')
-        MYSQL_DATABASE_USER = 'e4ipelto'
-        MYSQL_DATABASE_PASSWORD = 'Kaff1156'
-        MYSQL_DATABASE_DB = 'dbe4ipelto1'
-        conn = pymysql.connect(
-            host=MYSQL_DATABASE_HOST,
-            user=MYSQL_DATABASE_USER,
-            passwd=MYSQL_DATABASE_PASSWORD,
-            db=MYSQL_DATABASE_DB)
-        cursor = conn.cursor()
-        cursor.execute("SELECT * from user where username='%s' and password='%s'" %
-                        (username, password))
-        data = cursor.fetchone()
         if data:
             return True
         else:
