@@ -67,14 +67,14 @@ def valid_login():
             user=MYSQL_DATABASE_USER,
             passwd=MYSQL_DATABASE_PASSWORD,
             db=MYSQL_DATABASE_DB)
-            cursor = conn.cursor()
-            cursor.execute("SELECT * from user where username='%s' and password='%s'" %
+        cursor = conn.cursor()
+        cursor.execute("SELECT * from user where username='%s' and password='%s'" %
                         (username, password))
                         data = cursor.fetchone()
         if data:
             return True
         else:
-            return True #Fix to false 
+            return True #Fix to false
 
 print ('Waiting for Mifare card...')
 while(1):
