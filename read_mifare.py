@@ -39,43 +39,46 @@ Name: Fill based on the registration info
 
 '''
 
-codes = {
-    1: {'info' : {'name':'Iippa', 'balance':10.00, 'tag':'0x80a1345b'}},
-    2: {'info' : {'name':'nelson', 'balance':25.15, 'tag':'75110484217139'}},
-    3: {'info' : {'name':'Joni', 'balance':1.00, 'tag':4334}},
-    4: {'info' : {'name':'Mikki', 'balance':14.00, 'tag':1254}},
-    5: {'info' : {'name':'Kari', 'balance':7.15, 'tag':7778}}
-   }
-
 #Create toggle switch to represent succesfull opening of lock
 
 key = False
 
+# Kivy App
 class MyApp(App):
         def build(self):
-                if key == True:
-                        return Label(text='Tervetuloa %s' %name)
-                else:
-                        return Label(text='Ei loytynyt. Rekisteroidy nyt?')
-def scan_database():
-        global key, uid, name
+            return Label(text='Tervetuloa %s' %name)
+
+def valid_login():
         #Read value from NFC/RFID reader
         scan = '0x{0}'.format(binascii.hexlify(uid))
-        #Search through all know tags and print result
-        for code in codes:
-                if scan == codes[code]['info']['tag']:
-                        print ('Tervetuloa %s' %codes[code]['info']['name'])
-                        print ('Tamanhetkinen saldo: %s euroa' %codes[code]['info']['balance'])
-                        key = True
-                        name = codes[code]['info']['name']
-                        break
+        #mysql
+        MYSQL_DATABASE_HOST = os.getenv('IP', '0.0.0.0')
+        MYSQL_DATABASE_USER = 'iippa'
+        MYSQL_DATABASE_PASSWORD = ''
+        MYSQL_DATABASE_DB = 'my_flask_app'
+        conn = pymysql.connect(
+            host=MYSQL_DATABASE_HOST,
+            user=MYSQL_DATABASE_USER,
+            passwd=MYSQL_DATABASE_PASSWORD,
+            db=MYSQL_DATABASE_DB)
+            cursor = conn.cursor()
+            cursor.execute("SELECT * from user where username='%s' and password='%s'" %
+                        (username, password))
+                        data = cursor.fetchone()
+        if data:
+            return True
+        else:
+            return False
+
 print ('Waiting for Mifare card...')
 while(1):
         uid = pn532.read_passive_target()
         if uid is None:
                 continue
-        scan_database()
-        print ('Found card with UID: 0x{0}'.format(binascii.hexlify(uid)))
-        if __name__ == '__main__':
+        if valid_login():
+            if __name__ == '__main__':
                 MyApp().run()
+        else:
+            continue
+        print ('Found card with UID: 0x{0}'.format(binascii.hexlify(uid)))
         break

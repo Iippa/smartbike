@@ -1,0 +1,5 @@
+kivy
+flask
+pymysql
+mysql
+RPi.GPIO
