@@ -1,11 +1,17 @@
+import os
 import binascii
 import sys
 import Adafruit_PN532 as PN532
 import kivy
-kivy.require('1.9.1') # replace with your current kivy version !
+import pymysql
 
+from flask import Flask, request, render_template, redirect, url_for, flash, session
+import logging
+from logging.handlers import RotatingFileHandler
 from kivy.app import App
 from kivy.uix.label import Label
+
+kivy.require('1.9.1') # replace with your current kivy version !
 
 # Setup how the PN532 is connected to the Raspbery Pi/BeagleBone Black.
 # It is recommended to use a software SPI connection with 4 digital GPIO pins.
@@ -53,9 +59,9 @@ def valid_login():
         scan = '0x{0}'.format(binascii.hexlify(uid))
         #mysql
         MYSQL_DATABASE_HOST = os.getenv('IP', '0.0.0.0')
-        MYSQL_DATABASE_USER = 'iippa'
-        MYSQL_DATABASE_PASSWORD = ''
-        MYSQL_DATABASE_DB = 'my_flask_app'
+        MYSQL_DATABASE_USER = 'e4ipelto'
+        MYSQL_DATABASE_PASSWORD = 'Kaff1156'
+        MYSQL_DATABASE_DB = 'dbe4ipelto1'
         conn = pymysql.connect(
             host=MYSQL_DATABASE_HOST,
             user=MYSQL_DATABASE_USER,
@@ -68,7 +74,7 @@ def valid_login():
         if data:
             return True
         else:
-            return False
+            return True
 
 print ('Waiting for Mifare card...')
 while(1):

@@ -1,3 +1,3 @@
 # raspberry
 
-#Git repository for raspberry programs
+Git repository for raspberry programs
