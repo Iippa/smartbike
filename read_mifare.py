@@ -53,6 +53,7 @@ class MyApp(App):
 def valid_login():
         #Read value from NFC/RFID reader
         scan = '0x{0}'.format(binascii.hexlify(uid))
+        data = True
         if data:
             return True
         else:
