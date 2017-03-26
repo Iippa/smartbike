@@ -74,7 +74,7 @@ def valid_login():
         if data:
             return True
         else:
-            return True
+            return True #Fix to false 
 
 print ('Waiting for Mifare card...')
 while(1):
