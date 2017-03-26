@@ -70,7 +70,7 @@ def valid_login():
         cursor = conn.cursor()
         cursor.execute("SELECT * from user where username='%s' and password='%s'" %
                         (username, password))
-                        data = cursor.fetchone()
+        data = cursor.fetchone()
         if data:
             return True
         else:
