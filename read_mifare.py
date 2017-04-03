@@ -140,7 +140,7 @@ key = False
 class MyApp(App):
         def build(self):
             return Label(text='Tervetuloa %s' %name)
-def scan_database(str(uid)):
+def scan_database(uid):
     #Search through all know tags and print result
     for code in codes:
         if uid == codes[code]['info']['tag']:
@@ -148,7 +148,7 @@ def scan_database(str(uid)):
 
 def valid_login():
         #Read value from NFC/RFID reader
-        scan = '0x{0}'.format(binascii.hexlify(uid))
+        scan = str(uid)
         if scan_database(scan):
             return True
         else:
@@ -163,5 +163,4 @@ while(1):
             CarouselApp().run()
         else:
             LoginApp().run()
-        print 'Found card with UID: 0x{0}'.format(binascii.hexlify(uid))
         break
