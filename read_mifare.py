@@ -108,10 +108,6 @@ codes = {
     5: {'info' : {'name':'Kari', 'balance':7.15, 'tag':7778}}
     }
 
-##Read value from NFC/RFID reader
-print "Please insert UID"
-scan = uid
-print scan
 
 # Setup how the PN532 is connected to the Raspbery Pi/BeagleBone Black.
 # It is recommended to use a software SPI connection with 4 digital GPIO pins.
@@ -144,10 +140,10 @@ key = False
 class MyApp(App):
         def build(self):
             return Label(text='Tervetuloa %s' %name)
-def scan_database(scan):
+def scan_database(uid):
     #Search through all know tags and print result
     for code in codes:
-        if scan == codes[code]['info']['tag']:
+        if uid == codes[code]['info']['tag']:
             return True
 
 def valid_login():
