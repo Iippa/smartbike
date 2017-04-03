@@ -140,7 +140,7 @@ key = False
 class MyApp(App):
         def build(self):
             return Label(text='Tervetuloa %s' %name)
-def scan_database(uid):
+def scan_database(str(uid)):
     #Search through all know tags and print result
     for code in codes:
         if uid == codes[code]['info']['tag']:
@@ -156,7 +156,7 @@ def valid_login():
 
 print ('Waiting for Mifare card...')
 while(1):
-        uid = str(pn532.read_passive_target())
+        uid = pn532.read_passive_target()
         if uid is None:
                 continue
         if valid_login():
