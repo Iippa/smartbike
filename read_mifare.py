@@ -101,7 +101,7 @@ Name: Fill based on the registration info
 '''
 
 codes = {
-    1: {'info' : {'name':'Iippa', 'balance':10.00, 'tag':'1234'}},
+    1: {'info' : {'name':'Iippa', 'balance':10.00, 'tag':'0xd9d98bab'}},
     2: {'info' : {'name':'nelson', 'balance':25.15, 'tag':'4457'}},
     3: {'info' : {'name':'Joni', 'balance':1.00, 'tag':'4334'}},
     4: {'info' : {'name':'Mikki', 'balance':14.00, 'tag':1254}},
@@ -156,12 +156,12 @@ def valid_login():
 
 print ('Waiting for Mifare card...')
 while(1):
-        uid = pn532.read_passive_target()
+        uid = str(pn532.read_passive_target())
         if uid is None:
                 continue
         if valid_login():
             CarouselApp().run()
         else:
             LoginApp().run()
-        print 'Found card with UID: 0x{0}'.format(binascii.hexlify(uid))   
+        print 'Found card with UID: 0x{0}'.format(binascii.hexlify(uid))
         break
