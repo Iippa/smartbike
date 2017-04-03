@@ -43,7 +43,6 @@ while True:
         continue
     print('Found card with UID: 0x{0}'.format(binascii.hexlify(uid)))
     scan = '0x{0}'.format(binascii.hexlify(uid))
-    scan =
     print scan
     # Authenticate block 4 for reading with default key (0xFFFFFFFFFFFF).
     if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
