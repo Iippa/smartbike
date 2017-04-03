@@ -157,12 +157,11 @@ def valid_login():
 print ('Waiting for Mifare card...')
 while(1):
         uid = pn532.read_passive_target()
-        print ('0x{0}'.format(binascii.hexlify(uid)))
+        print ('Found card with UID: 0x{0}'.format(binascii.hexlify(uid)))        
         if uid is None:
                 continue
         if valid_login():
             CarouselApp().run()
         else:
             LoginApp().run()
-        print ('Found card with UID: 0x{0}'.format(binascii.hexlify(uid)))
         break
