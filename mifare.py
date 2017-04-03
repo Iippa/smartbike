@@ -42,7 +42,7 @@ while True:
     if uid is None:
         continue
     print('Found card with UID: 0x{0}'.format(binascii.hexlify(uid)))
-    scan = '0x{0}'.format(binascii.hexlify(uid)))
+    scan = '0x{0}'.format(binascii.hexlify(uid))
     scan =
     print scan
     # Authenticate block 4 for reading with default key (0xFFFFFFFFFFFF).
