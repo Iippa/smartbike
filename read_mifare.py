@@ -157,6 +157,7 @@ def valid_login():
 print ('Waiting for Mifare card...')
 while(1):
         uid = pn532.read_passive_target()
+        print uid
         if uid is None:
                 continue
         if valid_login():
