@@ -77,7 +77,7 @@ class Register(Screen):
 class In_use(Screen):
     pass
 
-Builder.load_file('/home/pi/working/smartbike/bike.kv')
+Builder.load_file('/home/pi/working/smartbike/bike2.kv')
 
 # Create the screen manager
 sm = ScreenManager()
