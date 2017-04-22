@@ -1,0 +1,174 @@
+#: kivy 1.9
+#: import ScreenManager kivy.uix.screenmanager.ScreenManager
+#: import Screen kivy.uix.screenmanager.ScreenManager
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+#: import Welcome screen
+#: import Register screen
+#: import In_use screen
+#: import Text kivy.uix.textinput.TextInput
+#: import AsyncImage kivy.uix.image
+
+
+<Register>:
+    canvas:
+        Rectangle:
+            source: '/home/pi/working/smartbike/images/background.jpg'
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        id: register
+        orientation: 'vertical'
+        padding: [30,20,30,5]
+        spacing: 10
+        size_hint: 1, .8
+        pos_hint: {"center_x": 0.5, "top": 1}
+
+        Label:
+            text: "Welcome"
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            text: "Welcome"
+            font_size: 35
+            size_hint: 1, .1
+
+        Label:
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            text: "We didn't find You  in our database - please register"
+            font_size: 20
+            size_hint: 1, .1
+
+
+        BoxLayout:
+
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+
+            TextInput:
+                id: login
+                hint_text: 'Name'
+                corners: 10, 10, 10, 10
+                multiline:False
+                font_size: 12
+
+            TextInput:
+                id: phonenumber
+                hint_text: 'Phone number'
+                multiline:False
+                font_size: 12
+
+            TextInput:
+                id: address
+                hint_text: 'Address'
+                multiline:False
+                font_size: 12
+
+            TextInput:
+                id: city
+                hint_text: 'City'
+                multiline:False
+                font_size: 12
+
+            TextInput:
+                id: city
+                hint_text: 'Postal code'
+                multiline:False
+                font_size: 12
+
+            TextInput:
+                id: password
+                hint_text: 'Password'
+                multiline:False
+                password:True
+                font_size: 12
+
+            TextInput:
+                id: repeatpassword
+                hint_text: 'Repeat password'
+                multiline:False
+                password:True
+                font_size: 12
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+        spacing: 10
+        size_hint: 1, .2
+
+        Button:
+            text: "Register"
+            background_normal: "/home/pi/working/smartbike/images/button.png"
+            background_down: "/home/pi/working/smartbike/images/button.png"
+            opacity: 1 if self.state == 'normal' else .5
+            on_release:
+                # You can define the duration of the change
+                # and the direction of the slide
+                root.manager.current = 'welcome'
+
+        Label:
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            font_size:35
+            text: 'or'
+
+
+        Button:
+            size_hint: 1, 1.5
+            pos_hint: {"center_x": 0.8, "top": 1.2}
+            background_normal: "/home/pi/working/smartbike/images/facebook-login.png"
+            background_down: "/home/pi/working/smartbike/images/facebook-login.png"
+            opacity: 1 if self.state == 'normal' else .5
+
+<Welcome>:
+    canvas:
+        Rectangle:
+            source: '/home/pi/working/smartbike/images/background.jpg'
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [0,50,0,0]
+        spacing: 10
+        Label:
+            size_hint: 1, .1
+            #pos_hint: {"center_x": .5, "top": 1}
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            text:"Welcome " + root.user + " to use our public bike share!"
+            font_size: 35
+        AsyncImage:
+            size_hint: 1, .9
+            pos: 0, root.y
+            source: 'http://wave100.fi/wordpress/wp-content/uploads/2016/01/finnkinologo-tekstivr2.jpg'
+            on_touch_down:
+                print 'Going to webpage 1'
+                root.manager.current = 'in_use'
+
+
+<In_use>:
+    NavigationDrawer:
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'One'
+            Button:
+                text: 'Two'
+            Button:
+                text: 'Three'
+            Button:
+                text: 'Four'
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Button:
+            size_hint: .2, .1
+            pos_hint:{'x':0, 'y':.9}
+            id: btn
+            text: 'Press'
+            height: '48dp'
+
+        Button:
+            size_hint: 1, .2
+            pos_hint:{'x':0, 'y':.9}
+            on_release:
+                #root.manager.transition.direction = 'left'
+                app.root.transition = NoTransition()
+                root.manager.current = 'register'
