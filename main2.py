@@ -49,9 +49,7 @@ def get_name():
 def read_mifare():
     while(1):
         uid = pn532.read_passive_target()
-        if uid is None:
-            continue
-        else:
+        if uid != None:
             #Read value from NFC/RFID reader
             scan = '0x{0}'.format(binascii.hexlify(uid))
             return scan
