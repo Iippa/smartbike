@@ -68,8 +68,8 @@ def in_use():
     # Start Kivy in "In_use" screen
     sm.current = 'in_use'
     if __name__ == "__main__":
-        BikeApp().run()
         os.system("echo"+" "+"0"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
+        BikeApp().run()
 
 class Welcome(Screen):
     # Define users name so that Kivy knows how to handle it
