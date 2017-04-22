@@ -12,12 +12,12 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.label import Label
 from kivy.garden.navigationdrawer import NavigationDrawer
 
+from kivy.config import Config
+Config.set('kivy', 'log_level', 'debug')
+
 import binascii
 import sys
 import Adafruit_PN532 as PN532
-
-Config.set('kivy', 'log_level', 'debug')
-
 
 # Set to fullscreen mode
 #Window.size = (800,480)
