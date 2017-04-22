@@ -43,7 +43,7 @@ pn532.SAM_configuration()
 key = False
 
 #Turn screen backlight off
-os.system(sudo echo 1 > /sys/class/backlight/rpi_backlight/bl_power)
+os.system("echo" "1" ">" "/sys/class/backlight/rpi_backlight/bl_power")
 
 # Get the name of the user from database
 def get_data():
@@ -62,7 +62,7 @@ def read_mifare():
             return scan
 
 def succes_read():
-    os.system(echo 0 > /sys/class/backlight/rpi_backlight/bl_power)
+    os.system("echo" "0" ">" "/sys/class/backlight/rpi_backlight/bl_power")
     return True
 
 def in_use():
