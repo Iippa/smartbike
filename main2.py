@@ -13,7 +13,6 @@ from kivy.uix.label import Label
 from kivy.garden.navigationdrawer import NavigationDrawer
 
 import binascii
-import sys
 import Adafruit_PN532 as PN532
 
 # Set to fullscreen mode
