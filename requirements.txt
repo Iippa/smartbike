@@ -3,3 +3,6 @@ flask
 pymysql
 mysql
 RPi.GPIO
+xclip
+xsel
+kivy-garden
