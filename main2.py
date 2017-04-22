@@ -62,7 +62,6 @@ def read_mifare():
             return scan
 
 def succes_read():
-    os.system("echo"+" "+"0"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
     return True
 
 def in_use():
@@ -70,6 +69,7 @@ def in_use():
     sm.current = 'in_use'
     if __name__ == "__main__":
         BikeApp().run()
+        os.system("echo"+" "+"0"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
 
 class Welcome(Screen):
     # Define users name so that Kivy knows how to handle it
