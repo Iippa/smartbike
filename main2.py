@@ -1,5 +1,6 @@
 #!/usr/bin/kivy
-import kivy
+import sys
+sys.path.append("/home/pi/working/libs/kivy")
 
 from kivy.app import App
 from kivy.lang import Builder
