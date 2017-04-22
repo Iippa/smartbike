@@ -1,7 +1,4 @@
-kivy
-flask
-pymysql
-mysql
+kivy == 1.9.1
 RPi.GPIO
 xclip
 xsel
