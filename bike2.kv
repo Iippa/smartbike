@@ -8,6 +8,35 @@
 #: import Text kivy.uix.textinput.TextInput
 #: import AsyncImage kivy.uix.image
 
+<In_use>:
+    NavigationDrawer:
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'One'
+            Button:
+                text: 'Two'
+            Button:
+                text: 'Three'
+            Button:
+                text: 'Four'
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Button:
+            size_hint: .2, .1
+            pos_hint:{'x':0, 'y':.9}
+            id: btn
+            text: 'Press'
+            height: '48dp'
+
+        Button:
+            size_hint: 1, .2
+            pos_hint:{'x':0, 'y':.9}
+            on_release:
+                #root.manager.transition.direction = 'left'
+                app.root.transition = NoTransition()
+                root.manager.current = 'register'
 
 <Register>:
     canvas:
@@ -141,34 +170,3 @@
             on_touch_down:
                 print 'Going to webpage 1'
                 root.manager.current = 'in_use'
-
-
-<In_use>:
-    NavigationDrawer:
-        BoxLayout:
-            orientation: 'vertical'
-            Button:
-                text: 'One'
-            Button:
-                text: 'Two'
-            Button:
-                text: 'Three'
-            Button:
-                text: 'Four'
-    BoxLayout:
-        orientation: 'horizontal'
-
-        Button:
-            size_hint: .2, .1
-            pos_hint:{'x':0, 'y':.9}
-            id: btn
-            text: 'Press'
-            height: '48dp'
-
-        Button:
-            size_hint: 1, .2
-            pos_hint:{'x':0, 'y':.9}
-            on_release:
-                #root.manager.transition.direction = 'left'
-                app.root.transition = NoTransition()
-                root.manager.current = 'register'

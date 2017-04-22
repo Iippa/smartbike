@@ -88,9 +88,10 @@ Builder.load_file('/home/pi/working/smartbike/bike2.kv')
 sm = ScreenManager()
 
 # Add screens
+sm.add_widget(In_use(name='in_use'))
 sm.add_widget(Register(name='register'))
 sm.add_widget(Welcome(name='welcome'))
-sm.add_widget(In_use(name='in_use'))
+
 
 
 class BikeApp(App):
