@@ -25,14 +25,14 @@
 
         Button:
             size_hint: .2, .1
-            pos_hint:{'x':0, 'y':.9}
+            pos_hint:{'x':1, 'y':.9}
             id: btn
             text: 'Press'
             height: '48dp'
 
         Button:
             size_hint: 1, .2
-            pos_hint:{'x':0, 'y':.9}
+            pos_hint:{'x':1, 'y':.9}
             on_release:
                 #root.manager.transition.direction = 'left'
                 app.root.transition = NoTransition()
