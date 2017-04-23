@@ -1,0 +1,185 @@
+#:kivy 1.8.0
+
+<SidePanel>:
+    orientation: 'vertical'
+    spacing: 1
+
+    MenuItem:
+        text: 'Tervetuloa'
+
+    MenuItem:
+        text: 'Rekisteroidy'
+
+    MenuItem:
+        text: 'Kaytossa'
+
+
+<AppActionBar>:
+    pos_hint: {'top':1}
+    ActionView:
+        use_separator: True
+        ActionMenu:
+            title: 'AndroidApp'
+            with_previous: False
+            app_icon: 'atlas://data/images/defaulttheme/splitter_grip'
+            on_press: self.menu()
+        ActionOverflow:
+        ActionQuit:
+            text: 'Fine'
+            icon: 'atlas://data/images/defaulttheme/close'
+            on_press: self.menu()
+
+<MainPanel>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    AppButton:
+        id: bottone
+        nome_bottone: bottone
+        text: 'AppExec'
+        on_press: self.app_pushed()
+        on_release: self.app_pushed()
+
+<PaginaTre>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+    Label:
+        text: "Aja!"
+
+<PaginaDue>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    BoxLayout:
+        id: register
+        orientation: 'vertical'
+        padding: [30,70,30,5]
+        spacing: 10
+        size_hint: 1, .8
+        pos_hint: {"center_x": 0.5, "top": 1}
+
+        Label:
+            text: "Welcome"
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            text: "Welcome"
+            font_size: 35
+            size_hint: 1, .1
+
+        Label:
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            text: "We didn't find You  in our database - please register"
+            font_size: 20
+            size_hint: 1, .1
+
+
+        BoxLayout:
+
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+
+            TextInput:
+                id: login
+                hint_text: 'Name'
+                corners: 10, 10, 10, 10
+                multiline:False
+                font_size: 10
+
+            TextInput:
+                id: phonenumber
+                hint_text: 'Phone number'
+                multiline:False
+                font_size: 10
+
+            TextInput:
+                id: address
+                hint_text: 'Address'
+                multiline:False
+                font_size: 10
+
+            TextInput:
+                id: city
+                hint_text: 'City'
+                multiline:False
+                font_size: 10
+
+            TextInput:
+                id: city
+                hint_text: 'Postal code'
+                multiline:False
+                font_size: 10
+
+            TextInput:
+                id: password
+                hint_text: 'Password'
+                multiline:False
+                password:True
+                font_size: 10
+
+            TextInput:
+                id: repeatpassword
+                hint_text: 'Repeat password'
+                multiline:False
+                password:True
+                font_size: 10
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+        spacing: 10
+        size_hint: 1, .2
+
+        Button:
+            text: "Register"
+            background_normal: "/home/pi/working/smartbike/images/button.png"
+            background_down: "/home/pi/working/smartbike/images/button.png"
+            opacity: 1 if self.state == 'normal' else .5
+
+        Label:
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            font_size:35
+            text: 'or'
+
+
+        Button:
+            size_hint: 1, 1.5
+            pos_hint: {"center_x": 0.8, "top": 1.2}
+            background_normal: "/home/pi/working/smartbike/images/facebook-login.png"
+            background_down: "/home/pi/working/smartbike/images/facebook-login.png"
+            opacity: 1 if self.state == 'normal' else .5
+
+
+<PaginaUno>:
+    orientation: 'vertical'
+    spacing: 1
+
+    AppActionBar:
+        size_hint: (1., 0.1)
+
+    BoxLayout:
+
+        orientation: 'vertical'
+        padding: [0,70,0,0]
+        spacing: 10
+        Label:
+            size_hint: 1, .1
+            #pos_hint: {"center_x": .5, "top": 1}
+            font_name: '/home/pi/working/smartbike/Budidaya Regular.otf'
+            text:"Welcome " + "Iiro" + " to use our public bike share!"
+            font_size: 35
+        AsyncImage:
+            size_hint: 1, .9
+            pos: 0, root.y
+            source: 'http://wave100.fi/wordpress/wp-content/uploads/2016/01/finnkinologo-tekstivr2.jpg'
+            on_touch_down:
+                print 'Going to webpage 1'
