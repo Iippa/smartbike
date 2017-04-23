@@ -20,15 +20,6 @@
                 text: 'Three'
             Button:
                 text: 'Four'
-    BoxLayout:
-        orientation: 'horizontal'
-
-        Button:
-            size_hint: .2, .1
-            pos_hint:{'x':1, 'y':.9}
-            id: btn
-            text: 'Press'
-            height: '48dp'
 
     FloatLayout:
         Button:
@@ -171,7 +162,7 @@
         AsyncImage:
             size_hint: 1, .9
             pos: 0, root.y
-            source: ''
+            source: 'http://wave100.fi/wordpress/wp-content/uploads/2016/01/finnkinologo-tekstivr2.jpg'
             on_touch_down:
                 print 'Going to webpage 1'
                 root.manager.current = 'in_use'
