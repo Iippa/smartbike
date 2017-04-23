@@ -30,9 +30,14 @@
             text: 'Press'
             height: '48dp'
 
+    FloatLayout:
         Button:
-            size_hint: 1, .2
-            pos_hint:{'x':1, 'y':.9}
+            text: 'Next'
+            size_hint_x: None
+            widht: 200
+            size_hint_y: None
+            height: 100
+            pos_hint: {"right": 1, "bottom": 1}
             on_release:
                 #root.manager.transition.direction = 'left'
                 app.root.transition = NoTransition()
