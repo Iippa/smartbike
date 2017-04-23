@@ -33,6 +33,13 @@
                 #root.manager.transition.direction = 'left'
                 app.root.transition = NoTransition()
                 root.manager.current = 'register'
+        AsyncImage:
+            size_hint: 1, .9
+            pos: 0, root.y
+            source: 'http://wave100.fi/wordpress/wp-content/uploads/2016/01/finnkinologo-tekstivr2.jpg'
+            on_touch_down:
+                source = 'https://www.google.fi/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwiM3rzcx7rTAhWGJJoKHQRwDTEQjBwIBA&url=https%3A%2F%2Fi.kinja-img.com%2Fgawker-media%2Fimage%2Fupload%2Fs--92KoUoLo--%2Fc_scale%2Cfl_progressive%2Cq_80%2Cw_800%2Fkqrytcimqdxpeqjjy1si.jpg&psig=AFQjCNET8gPhVGesIvyGQ6C1JIx66U7siQ&ust=1493036276615531'
+                
 
 <Register>:
     canvas:
