@@ -35,13 +35,17 @@
 
     AppActionBar:
         size_hint: (1., 0.1)
-
-    AppButton:
-        id: bottone
-        nome_bottone: bottone
-        text: 'AppExec'
-        on_press: self.app_pushed()
-        on_release: self.app_pushed()
+    BoxLayout:
+        AppButton:
+            id: bottone
+            nome_bottone: bottone
+            text: 'AppExec'
+            on_press: self.app_pushed()
+            on_release: self.app_pushed()
+        Bike:
+            text: "Kirjaudu ulos"
+            on_release:
+                self.logout():
 
 <PaginaTre>:
     orientation: 'vertical'

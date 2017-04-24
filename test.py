@@ -92,19 +92,25 @@ def succes_read():
     return True
 
 def in_use():
-    togle_servo()
+    togle_servo(1)
     if __name__ == "__main__":
         os.system("echo"+" "+"0"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
         TestApp().run()
-def logout():
-    #Turn screen backlight off
-    os.system("echo"+" "+"1"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
 
-def togle_servo():
+class Bike(Button):
+    def logout(self):
+        print "Logout"
+        togle_servo(3)
+        #Turn screen backlight off
+        os.system("echo"+" "+"1"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
+        RootApp.stop()
+
+
+def togle_servo(time):
     desiredPosition = 0
     DC=1./18.*(desiredPosition)+2
     pwm.ChangeDutyCycle(DC)
-    sleep(1)
+    sleep(time)
     desiredPosition = 80
     DC=1./18.*(desiredPosition)+2
     pwm.ChangeDutyCycle(DC)
