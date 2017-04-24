@@ -92,8 +92,6 @@ def succes_read():
     return True
 
 def in_use():
-    # Start Kivy in "In_use" screen
-    sm.current = 'in_use'
     if __name__ == "__main__":
         os.system("echo"+" "+"0"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
         TestApp().run()
