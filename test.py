@@ -98,7 +98,7 @@ def in_use():
         TestApp().run()
 def logout():
     #Turn screen backlight off
-    os.system("echo"+" "+"1"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_powe
+    os.system("echo"+" "+"1"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
 
 def togle_servo():
     desiredPosition = 0
