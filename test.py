@@ -40,9 +40,11 @@ RootApp = None
 import binascii
 import Adafruit_PN532 as PN532
 
-# Set to fullscreen mode
-#Window.size = (800,480)
-#Window.fullscreen = True
+GPIO.setmode(GPIO.BCM)
+servoPin = 17
+GPIO.setup(servoPin,GPIO.OUT)
+pwm=GPIO.PWM(servoPin,50)
+pwm.start(7)
 
 #Initialize RFID reader
 # Setup how the PN532 is connected to the Raspbery Pi/BeagleBone Black.
