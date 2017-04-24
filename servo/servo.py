@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import time import sleep
+from time import sleep
 GPIO.setmode(GPIO.BCM)
 servoPin = 17
 GPIO.setup(servoPin,GPIO.OUT)

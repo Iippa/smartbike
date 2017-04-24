@@ -39,6 +39,8 @@ RootApp = None
 
 import binascii
 import Adafruit_PN532 as PN532
+import RPi.GPIO as GPIO
+from time import sleep
 
 GPIO.setmode(GPIO.BCM)
 servoPin = 17
