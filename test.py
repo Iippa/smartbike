@@ -34,9 +34,6 @@ from kivy.core.window import Window
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.label import Label
 
-# Set to fullscreen mode
-Window.fullscreen = True
-
 RootApp = None
 
 
@@ -167,6 +164,9 @@ class TestApp(App):
 
     def build(self):
 
+        # Set to fullscreen mode
+        Window.size = (800,480)
+        Window.fullscreen = True
         global RootApp
         RootApp = self
 
