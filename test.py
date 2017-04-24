@@ -103,7 +103,7 @@ class Bike(Button):
         togle_servo(3)
         #Turn screen backlight off
         os.system("echo"+" "+"1"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
-        clear_widgets()
+        root.clear_widgets()
         RootApp.stop()
 
 
