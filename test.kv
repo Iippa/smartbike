@@ -35,26 +35,26 @@
 
     AppActionBar:
         size_hint: (1., 0.1)
-    BoxLayout:
-        AppButton:
-            id: bottone
-            nome_bottone: bottone
-            text: 'AppExec'
-            on_press: self.app_pushed()
-            on_release: self.app_pushed()
-        Bike:
-            text: "Kirjaudu ulos"
-            on_release:
-                self.logout()
 
+    AppButton:
+        id: bottone
+        nome_bottone: bottone
+        text: 'AppExec'
+        on_press: self.app_pushed()
+        on_release: self.app_pushed()
 <PaginaTre>:
     orientation: 'vertical'
     spacing: 1
 
     AppActionBar:
         size_hint: (1., 0.1)
-    Label:
-        text: "Aja!"
+    BoxLayout:
+        Label:
+            text: "Aja!"
+        Bike:
+            text: "Kirjaudu ulos"
+            on_release: self.logout()
+
 
 <PaginaDue>:
     orientation: 'vertical'
