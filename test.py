@@ -92,6 +92,13 @@ def succes_read():
     return True
 
 def in_use():
+    desiredPosition = 0
+    DC=1./18.*(desiredPosition)+2
+    pwm.ChangeDutyCycle(DC)
+    sleep(1)
+    desiredPosition = 80
+    DC=1./18.*(desiredPosition)+2
+    pwm.ChangeDutyCycle(DC)    
     if __name__ == "__main__":
         os.system("echo"+" "+"0"+" "+">"+"/sys/class/backlight/rpi_backlight/bl_power")
         TestApp().run()
