@@ -35,8 +35,8 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.label import Label
 
 # Set to fullscreen mode
-#Window.size = (800,480)
-#Window.fullscreen = True
+Window.size = (800,480)
+Window.fullscreen = True
 
 RootApp = None
 
