@@ -166,7 +166,7 @@ class TestApp(App):
 
         # Set to fullscreen mode
         Window.size = (800,480)
-        Window.fullscreen = True
+
         global RootApp
         RootApp = self
 
