@@ -14,6 +14,8 @@ from kivy.garden.navigationdrawer import NavigationDrawer
 
 import binascii
 import Adafruit_PN532 as PN532
+import Rpi.GPIO as GPIO
+from time import sleep
 
 # Set to fullscreen mode
 #Window.size = (800,480)
@@ -63,6 +65,13 @@ def succes_read():
     return True
 
 def in_use():
+    desiredPosition = 0
+    DC=1./18.*(desiredPosition)+2
+    pwm.ChangeDutyCycle(DC)
+    sleep(1)
+    desiredPosition = 80
+    DC=1./18.*(desiredPosition)+2
+    pwm.ChangeDutyCycle(DC)
     # Start Kivy in "In_use" screen
     sm.current = 'in_use'
     if __name__ == "__main__":

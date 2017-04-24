@@ -1,5 +1,5 @@
-import RPi.GPIO as BCM
-import time
+import RPi.GPIO as GPIO
+import time import sleep
 GPIO.setmode(GPIO.BCM)
 servoPin = 17
 GPIO.setup(servoPin,GPIO.OUT)
@@ -11,7 +11,7 @@ for i in range(0,20):
         desiredPosition = 0
         DC=1./18.*(desiredPosition)+2
         pwm.ChangeDutyCycle(DC)
-        time.sleep(1)
+        sleep(1)
         desiredPosition = 80
         DC=1./18.*(desiredPosition)+2
         pwm.ChangeDutyCycle(DC)
