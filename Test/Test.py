@@ -14,9 +14,6 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import SlideTransition
 from kivy.animation import Animation
 
-#Turn screen backlight off
-os.system("echo"+" "+"1"+" "+">"+"/sys/class/backlight/rpi_backlight/brightness")
-
 Window.size = (800,480)
 
 RootApp = None
@@ -24,7 +21,7 @@ RootApp = None
 class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):
         super(NavDrawer, self).__init__( **kwargs)
-        print 'luodaan'
+        print 'creating widget'
     def state_toggle(self, animate=True):
         if self.state == 'open':
             if animate:
@@ -32,6 +29,12 @@ class NavDrawer(NavigationDrawer):
                 self.anim_to_state('closed')
             else:
                 self.state = 'closed'
+        if self.state == 'closed':
+            if animate:
+                print 'lets try'
+                self.anim_to_state('open')
+            else:
+                self.state = 'open'
 
     def print_self_state(self):
         print self.state
@@ -47,8 +50,6 @@ class ActionMenu(ActionPrevious):
         RootApp.toggle_sidepanel()
 class On_Hold_Screen(Screen):
     def wake_up(self):
-        #Turn screen backlight on
-        os.system("echo"+" "+"255"+" "+">"+"/sys/class/backlight/rpi_backlight/brightness")
         root_widget.current = 'gen_info'
 
 class General_Info_Screen(Screen):
@@ -169,7 +170,7 @@ class MyScreenManager(ScreenManager):
 
 
 root_widget = Builder.load_file('Bike.kv')
-class BikeApp(App):
+class MyApp(App):
     icon = 'app_icon'
     menu = ObjectProperty()
     def build(self):
