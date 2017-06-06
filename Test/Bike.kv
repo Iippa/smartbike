@@ -10,6 +10,7 @@ MyScreenManager:
     On_Hold_Screen:
     General_Info_Screen:
     In_Use_Screen:
+        NavDrawer:
     Log_in_Screen:
 
 <Log_in_Screen>:
@@ -124,21 +125,24 @@ MyScreenManager:
     id: navdrawer
     anim_type: 'slide_above_anim'
     SidePanel:
-        orientation: 'vertical'
-        Label:
-            size: (1, .4)
-            text: 'Name'
-        Button:
-            text: 'One'
-            on_touch_down: app.root.current = 'hold'
-        Button:
-            text: 'Two'
-            on_touch_down: app.root.open()
-        Button:
-            text: 'Three'
-        Button:
-            text: 'Four'
-    MainPanel
+    MainPanel:
+<SidePanel>:
+    orientation: 'vertical'
+    Label:
+        size: (1, .4)
+        text: 'Name'
+    Button:
+        text: 'One'
+        on_release: app.root.current = 'hold'
+    Button:
+        text: 'Two'
+        on_release: app.menu.toggle_state()
+    Button:
+        text: 'Three'
+        on_release: app.root.current = 'gen_info'
+    Button:
+        text: 'Four'
+        on_release: app.menu.print_self_state()
 <MainPanel>:
     StackLayout:
         MenuBar:
@@ -158,8 +162,8 @@ MyScreenManager:
             title: ''
             with_previous: False
             app_icon: 'images/icons/menu_icon.png'
-            on_release:
-                app.root.navdrawer.toggle_state()
+            on_touch_down:
+                app.menu.toggle_state()
         ActionLabel:
             text: 'Name'
             font_size: 25

@@ -4,6 +4,7 @@ import os
 from kivy.app import App
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.garden.navigationdrawer import NavigationDrawer
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
@@ -24,17 +25,16 @@ class NavDrawer(NavigationDrawer):
     def __init__(self, **kwargs):
         super(NavDrawer, self).__init__( **kwargs)
         print 'luodaan'
-
     def state_toggle(self, animate=True):
-        print self.state
-        self.state = 'open'
         if self.state == 'open':
             if animate:
+                print 'lets try'
                 self.anim_to_state('closed')
             else:
                 self.state = 'closed'
 
-
+    def print_self_state(self):
+        print self.state
 class SidePanel(BoxLayout):
     pass
 
@@ -165,19 +165,15 @@ class Navigation_Screen(Screen):
     pass
 
 class MyScreenManager(ScreenManager):
-    def __init__(self, **kwargs):
-        super(MyScreenManager, self).__init__( **kwargs)
-        print 'luodaan screenmanager'
-    def open(self):
-        navigationdrawer = NavDrawer()
-        navigationdrawer.state_toggle()
     pass
+
 
 root_widget = Builder.load_file('Bike.kv')
 class BikeApp(App):
     icon = 'app_icon'
-
+    menu = ObjectProperty()
     def build(self):
+        self.menu = NavDrawer()
         return root_widget
 
 if __name__ == '__main__':
