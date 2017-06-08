@@ -9,13 +9,22 @@
 MyScreenManager:
     id: manager
     transition: SlideTransition()
+    Unlock_Screen:
     On_Hold_Screen:
     General_Info_Screen:
     In_Use_Screen:
         NavDrawer:
             id: navdrawer
     Log_in_Screen:
-
+<Unlock_Screen>:
+    name: 'unlock'
+    BoxLayout:
+        Button:
+            text: 'Press to unlock'
+            on_release: root.open()
+        Button:
+            text: 'Press to see current threads'
+            on_release: root.current_threads()
 <Log_in_Screen>:
     name: 'log_in'
     #set names to displays so that text can be changed in the .py file
@@ -135,14 +144,15 @@ MyScreenManager:
         text: 'One'
         on_release: app.root.current = 'hold'
     Button:
-        text: 'Two'
+        text: 'Lock'
         on_release:
+            root.lock_bike()
     Button:
         text: 'Three'
         on_release: root.change_current('gen_info')
     Button:
-        text: 'Four'
-        on_release:
+        text: 'Active threads'
+        on_release: root.thread_count()
 <MainPanel>:
     StackLayout:
         MenuBar:
